@@ -6,7 +6,10 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Customer extends User{
+public class Admin extends User{
 	
-	private int customerId;
+	private int adminId;
+	
+	
+	
 }
