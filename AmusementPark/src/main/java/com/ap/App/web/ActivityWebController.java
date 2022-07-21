@@ -34,9 +34,10 @@ public class ActivityWebController {
 	}
 	
 	@PutMapping("/update")
-	public Activity  updateActivity(@RequestBody Activity t)
+	public boolean  updateActivity(@RequestBody Activity t)
 	{
-		return service.insertActivity(t);
+		 service.updateActivity(t);
+		 return true;
 	}
 	
 	@DeleteMapping("/dactivity/{activityId}")
@@ -46,9 +47,7 @@ public class ActivityWebController {
 
 			return service.deleteActivity(activityId);	
 		
-		
-		
-	}
+		}
 	
 	@GetMapping("/view/")
 	public List<Activity> viewActivitiesOfCharges(){
