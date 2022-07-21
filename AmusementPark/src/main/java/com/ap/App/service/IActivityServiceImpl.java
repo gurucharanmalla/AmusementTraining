@@ -22,7 +22,7 @@ public class IActivityServiceImpl implements  IActivityService{
 	@Override
 	public Activity updateActivity(Activity activity) {
 		// TODO Auto-generated method stub
-		return actrepo.save(activity);
+		return null;
 	}
 	@Override
 	public boolean deleteActivity(int activityId) {
