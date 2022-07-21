@@ -1,19 +1,15 @@
-package com.ap.App.Entity;
+package com.ap.App.dto;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="Admin")
-public class Admin {
-	
+public class AdminSavePostDto {
+
 	@Id
-	@SequenceGenerator(name="mylogic1",initialValue=11,allocationSize=2)
-	@GeneratedValue(strategy=GenerationType.AUTO,generator="mylogic1")
+	@SequenceGenerator(name="mylogicdto",initialValue=11,allocationSize=2)
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="mylogicdto")
 	private int adminId;
 	private String username;
 	private String password;
@@ -61,10 +57,5 @@ public class Admin {
 		return "Admin [adminId=" + adminId + ", username=" + username + ", password=" + password + ", address="
 				+ address + ", mobileNumber=" + mobileNumber + ", email=" + email + "]";
 	}
-	
-	
-	
-	
-	
 	
 }
