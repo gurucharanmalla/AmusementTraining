@@ -19,6 +19,17 @@ public class Activity {
 	private int activityId;
 	private String description;
 	private float Charges;
+	public Activity(int activityId, String description, float charges) {
+		super();
+		this.activityId = activityId;
+		this.description = description;
+		this.Charges = charges;
+	}
+	
+	public Activity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getActivityId() {
 		return activityId;
 	}
