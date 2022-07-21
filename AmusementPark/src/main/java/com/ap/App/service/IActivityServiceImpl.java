@@ -13,23 +13,7 @@ public class IActivityServiceImpl implements  IActivityService{
 	@Autowired
 	IActivityRepository actrepo;
 	
-	//@Autowired
-	//ActivityDTOConversionClass dtoconv;
 	
-	
-	
-	//@Override
-	/*public ActivityBasicInfoDto insertActivity(ActivitySavePostDto actdto) {
-		// TODO Auto-generated method stub
-		Activity a=dtoconv.getActivityfromPostActivityDTO(actdto);
-		Activity saveobj=actrepo.save(a);
-		
-		ActivityBasicInfoDto obj=dtoconv.getActivityBasicInfoDTO(saveobj);
-		
-		return obj;
-	}
-	
-*/
 	@Override
 	public Activity insertActivity(Activity activity) {
 		// TODO Auto-generated method stub
