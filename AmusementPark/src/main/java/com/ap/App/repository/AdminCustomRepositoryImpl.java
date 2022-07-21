@@ -48,7 +48,7 @@ List<Activity>  list = (List<Activity>)query.getResultList();
 	public List<Activity> getActivitiesDatewise() {
 Session session = entityManager.unwrap(Session.class);
 		
-		String queryString = "select ticketId,activity from  Ticket t ORDER BY t.ticketID ";
+		String queryString = "select ticketId,date,activity from  Ticket t ORDER BY t.date ";
 	//	SELECT * from ticket  join  activity on ticket.activity_activity_id = activity.activity_id where ticket.customer_customer_id = 1;
 		//"from  Ticket t join Activity a  ON t.activity.activity_id = a.activity_id where t.customer.customer_id=:customerId";
 		@SuppressWarnings("unchecked")
