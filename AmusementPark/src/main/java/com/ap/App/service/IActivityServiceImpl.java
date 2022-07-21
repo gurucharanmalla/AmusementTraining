@@ -9,43 +9,28 @@ import com.ap.App.Entity.Activity;
 import com.ap.App.repository.IActivityRepository;
 
 @Service
-public class IActivityServiceImpl {
+public class IActivityServiceImpl implements  IActivityService{
 	@Autowired
 	IActivityRepository actrepo;
 	
-	@Autowired
-	//ActivityDTOConversionClass dtoconv;
 	
-	
-	
-	//@Override
-	/*public ActivityBasicInfoDto insertActivity(ActivitySavePostDto actdto) {
-		// TODO Auto-generated method stub
-		Activity a=dtoconv.getActivityfromPostActivityDTO(actdto);
-		Activity saveobj=actrepo.save(a);
-		
-		ActivityBasicInfoDto obj=dtoconv.getActivityBasicInfoDTO(saveobj);
-		
-		return obj;
-	}
-	
-*/
+	@Override
 	public Activity insertActivity(Activity activity) {
 		// TODO Auto-generated method stub
 		return actrepo.save(activity);
 	}
-	
+	@Override
 	public Activity updateActivity(Activity activity) {
 		// TODO Auto-generated method stub
-		return actrepo.save(activity);
+		return null;
 	}
-
+	@Override
 	public boolean deleteActivity(int activityId) {
 		// TODO Auto-generated method stub
 		actrepo.deleteById(activityId);
 		return true;
 	}
-
+	@Override
 	public List<Activity> viewActivitiesOfCharges() {
 		// TODO Auto-generated method stub
 		
@@ -56,7 +41,7 @@ public class IActivityServiceImpl {
 		//return null;
 	}
 
-	
+	@Override
 	public int countActivitiesOfCharges(float charges) {
 		// TODO Auto-generated method stub
 		return 0;
