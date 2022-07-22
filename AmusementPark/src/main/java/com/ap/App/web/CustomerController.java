@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ap.App.Entity.Customer;
 import com.ap.App.service.ICustomerService;
 
+
 @RestController
 @RequestMapping("/customerprofile")
 public class CustomerController {
@@ -50,5 +51,10 @@ public class CustomerController {
 	public List<Customer> viewCustomers()
 	{
 		return cus.viewCustomers();
+	}
+	@GetMapping("/validate")
+	public Customer validateCustomer(@RequestParam String username,@RequestParam String password) {
+		
+		 return cus.validateCustomer(username,password);
 	}
 }

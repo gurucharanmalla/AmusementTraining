@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.ap.App.Entity.Customer;
 
+
 @Service
 public interface ICustomerService {
 	public Customer insertCustomer(Customer c);
@@ -13,5 +14,5 @@ public interface ICustomerService {
 	public Customer updateCustomer(Customer c);
 	public String deleteCustomer(int customerId);
 	public List<Customer> viewCustomers();
-
+    public Customer validateCustomer(String username,String password) ;
 }

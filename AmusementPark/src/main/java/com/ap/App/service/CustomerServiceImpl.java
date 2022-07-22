@@ -2,18 +2,24 @@ package com.ap.App.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ap.App.Entity.Customer;
 import com.ap.App.repository.ICustomerRepository;
 
+
 @Service
 public class CustomerServiceImpl implements ICustomerService{
 	
 	@Autowired
 	ICustomerRepository customer;
-	
+	@Autowired
+	EntityManager entityManager;
 
 	@Override
 	public Customer insertCustomer(Customer c) {
@@ -49,6 +55,20 @@ public class CustomerServiceImpl implements ICustomerService{
 	public String deleteCustomer(int customerId) {
 		customer.deleteById(customerId);
 		return "Customer Deleted";
+	}
+
+	@Override
+	public Customer validateCustomer(String username,String password){
+Session session=entityManager.unwrap(Session.class); 
+		
+		String queryString ="from Customer b where b.username=:username and b.password=:password";
+		
+		Query<Customer> query=session.createQuery(queryString);
+		query.setString("username",username);
+		query.setString("password",password);
+		Customer b=query.getSingleResult();
+
+		return b;
 	}
 
 }
