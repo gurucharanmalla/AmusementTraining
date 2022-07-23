@@ -1,6 +1,7 @@
 package com.ap.App.repository;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -66,11 +67,36 @@ List<Activity>  list = (List<Activity>)query.getResultList();
 			throw new javax.persistence.NoResultException("No activities ");
 		}
 	}
-	
+
+
 
 	@Override
-	public List<Activity> getAllActivitiesForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) {
-		// TODO Auto-generated method stub
-		return null;
-	} 
+	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate, Date toDate){
+Session session = entityManager.unwrap(Session.class);
+		
+		String queryString = "select ticketId,date,activity from  Ticket t where t.customer.customerId=:customerId and t.date between ?:fromDate and ?:toDate ";
+	//	SELECT ticket_id, activity_activity_id, customer_customer_id, date
+	//	FROM public.ticket where customer_customer_id = 1 and date  between '01-01-2022' and '30-12-2022'  ;
+		@SuppressWarnings("unchecked")
+		Query<Activity> query = session.createQuery(queryString);
+		query.setInteger("customerId", customerId);
+		query.setDate(1, fromDate);
+		query.setDate(2, toDate);
+		
+List<Activity>  list = (List<Activity>)query.getResultList();
+		
+		// code to fetch data from DB using JPQL
+		
+		if(list != null)
+		{
+			return list;
+		}
+		else
+		{
+			throw new javax.persistence.NoResultException("No activities ");
+		}
+	}
+	
+
+	
 }

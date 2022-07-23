@@ -1,6 +1,6 @@
 package com.ap.App.repository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -12,5 +12,5 @@ public interface IAdminCustomRepository {
 
 	public List<Activity> getAllActivitiesofCustomer(int customerId);
 	public List<Activity> getActivitiesDatewise();
-	public List<Activity> getAllActivitiesForDays(int customerId, LocalDateTime fromDate,LocalDateTime toDate);
+	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate,Date toDate);
 }

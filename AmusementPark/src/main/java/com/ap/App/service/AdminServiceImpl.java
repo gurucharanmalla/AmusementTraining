@@ -1,5 +1,6 @@
 package com.ap.App.service;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ap.App.Entity.Activity;
 import com.ap.App.Entity.Admin;
+import com.ap.App.repository.IActivityRepository;
 import com.ap.App.repository.IAdminCustomRepository;
 import com.ap.App.repository.IAdminRepository;
 
@@ -20,6 +22,9 @@ public class AdminServiceImpl implements IAdminService {
 	@Autowired
 	IAdminCustomRepository repo;
 	
+	@Autowired
+	IActivityRepository act;
+	
 	@Override
 	public List<Activity> getAllActivitiesofCustomer(int customerId) {
 		// TODO Auto-generated method stub
@@ -28,8 +33,8 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<Activity> getgetAllActivities() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Activity> list = (List<Activity>) act.findAll(); 
+	     return list;
 	}
 
 	@Override
@@ -38,11 +43,7 @@ public class AdminServiceImpl implements IAdminService {
 		return repo.getActivitiesDatewise();
 	}
 
-	@Override
-	public List<Activity> getAllActivitiesForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public Admin insertAdmin(Admin admin) {
@@ -68,6 +69,12 @@ public class AdminServiceImpl implements IAdminService {
 	public Admin viewAdmin(int adminId) {
 		// TODO Auto-generated method stub
 		return repository.findById(adminId).get();
+	}
+
+	@Override
+	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate, Date toDate) {
+		// TODO Auto-generated method stub
+		return repo.getAllActivitiesForDays(customerId, fromDate, toDate);
 	}
 
 }

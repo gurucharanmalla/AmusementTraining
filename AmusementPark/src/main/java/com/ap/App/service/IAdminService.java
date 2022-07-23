@@ -1,5 +1,6 @@
 package com.ap.App.service;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface IAdminService {
 	public List<Activity> getAllActivitiesofCustomer(int customerId);
 	public List<Activity> getgetAllActivities();
 	public List<Activity> getActivitiesDatewise();
-	public List<Activity> getAllActivitiesForDays(int customerId, LocalDateTime fromDate,LocalDateTime toDate);
+	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate,Date toDate);
 
 }

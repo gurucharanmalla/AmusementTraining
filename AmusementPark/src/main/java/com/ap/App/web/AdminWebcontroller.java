@@ -1,5 +1,6 @@
 package com.ap.App.web;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.App.Entity.Activity;
@@ -31,18 +33,13 @@ public class AdminWebcontroller {
 	
 	@GetMapping("/allcus/{customerId}")
 	public List<Activity> getAllActivitiesofCustomer(@PathVariable int customerId){
-	/*	List<Activity> actList = (List<Activity>) service.getAllActivitiesofCustomer(customerId);
-		if(actList.size()==0) {
-			return null;
-		}
-		return actList;*/
 		return service.getAllActivitiesofCustomer(customerId);
 		
 	}
 	
 	@GetMapping("/actall")
 	public List<Activity> getAllActivities(){
-		return null;
+		return service.getgetAllActivities();
 
 	}
 	
@@ -52,9 +49,9 @@ public class AdminWebcontroller {
 		
 	}
 	
-	@GetMapping("/")
-	public List<Activity> getAllActivitiesForDays(int customerId, LocalDateTime fromDate,LocalDateTime toDate){
-		return null;
+	@GetMapping("/actday")
+	public List<Activity> getAllActivitiesForDays(@RequestParam int customerId,@RequestParam Date fromDate,@RequestParam Date toDate){
+		return service.getAllActivitiesForDays(customerId, fromDate, toDate);
 		
 	}
 	
