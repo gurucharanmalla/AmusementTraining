@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.ap.App.Entity.Activity;
 import com.ap.App.Entity.Admin;
+import com.ap.App.Entity.Ticket;
 import com.ap.App.repository.IActivityRepository;
 import com.ap.App.repository.IAdminCustomRepository;
 import com.ap.App.repository.IAdminRepository;
+import com.ap.App.repository.ITicketBookingRepo;
 
 @Service
 public class AdminServiceImpl implements IAdminService {
@@ -24,6 +26,9 @@ public class AdminServiceImpl implements IAdminService {
 	
 	@Autowired
 	IActivityRepository act;
+	
+	@Autowired
+	ITicketBookingRepo ticket;
 	
 	@Override
 	public List<Activity> getAllActivitiesofCustomer(int customerId) {
@@ -75,6 +80,12 @@ public class AdminServiceImpl implements IAdminService {
 	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate, Date toDate) {
 		// TODO Auto-generated method stub
 		return repo.getAllActivitiesForDays(customerId, fromDate, toDate);
+	}
+
+	@Override
+	public List<Ticket> getAllTickets() {
+		List<Ticket> list = (List<Ticket>) ticket.findAll(); 
+	     return list;
 	}
 
 }

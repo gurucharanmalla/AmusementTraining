@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.App.Entity.Activity;
 import com.ap.App.Entity.Admin;
+import com.ap.App.Entity.Ticket;
 import com.ap.App.service.IAdminService;
 
 @RestController
@@ -31,8 +34,8 @@ public class AdminWebcontroller {
 	
 	
 	
-	@GetMapping("/allcus/{customerId}")
-	public List<Activity> getAllActivitiesofCustomer(@PathVariable int customerId){
+	@GetMapping("/allcus")
+	public List<Activity> getAllActivitiesofCustomer(@RequestParam int customerId){
 		return service.getAllActivitiesofCustomer(customerId);
 		
 	}
@@ -78,6 +81,11 @@ public class AdminWebcontroller {
 		return service.deleteAdmin(adminId);
 	
 	
+	}
+	
+	@GetMapping("/adAllTicket")
+	public List<Ticket> getAllTickets(){
+		return service.getAllTickets();
 	}
 
 

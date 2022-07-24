@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ap.App.Entity.Activity;
 import com.ap.App.Entity.Admin;
+import com.ap.App.Entity.Ticket;
 import com.ap.App.dto.AdminSavePostDto;
 
 @Service
@@ -21,5 +22,6 @@ public interface IAdminService {
 	public List<Activity> getgetAllActivities();
 	public List<Activity> getActivitiesDatewise();
 	public List<Activity> getAllActivitiesForDays(int customerId, Date fromDate,Date toDate);
+	public List<Ticket> getAllTickets();
 
 }

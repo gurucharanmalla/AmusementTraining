@@ -33,14 +33,15 @@ List<Activity>  list = (List<Activity>)query.getResultList();
 		
 		// code to fetch data from DB using JPQL
 		
-		if(list != null)
-		{
-			return list;
-		}
-		else
-		{
-			throw new javax.persistence.NoResultException("No activities for customer with id : "+customerId);
-		}
+if(list != null)
+{
+	return list;
+}
+else
+{
+	throw new javax.persistence.NoResultException("No activities ");
+}
+
 	}
 
 
@@ -58,14 +59,7 @@ List<Activity>  list = (List<Activity>)query.getResultList();
 		
 		// code to fetch data from DB using JPQL
 		
-		if(list != null)
-		{
-			return list;
-		}
-		else
-		{
-			throw new javax.persistence.NoResultException("No activities ");
-		}
+	return list;
 	}
 
 
