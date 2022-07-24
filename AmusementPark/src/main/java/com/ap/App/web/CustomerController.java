@@ -3,6 +3,7 @@ package com.ap.App.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.ap.App.service.ICustomerService;
 
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:8099", "http://localhost:4200"},allowedHeaders = "*")		
 @RequestMapping("/customerprofile")
 public class CustomerController {
 	
@@ -42,8 +44,8 @@ public class CustomerController {
 	{
 		return cus.updateCustomer(c);
 	}
-	@GetMapping("/profile")
-	public Customer viewCustomer(@RequestParam int customerId)
+	@GetMapping("/profile/{customerId}")
+	public Customer viewCustomer(@PathVariable int customerId)
 	{
 		return cus.viewCustomer(customerId);
 	}
@@ -52,8 +54,8 @@ public class CustomerController {
 	{
 		return cus.viewCustomers();
 	}
-	@GetMapping("/validate")
-	public Customer validateCustomer(@RequestParam String username,@RequestParam String password) {
+	@GetMapping("/validate/{username}/{password}")
+	public Customer validateCustomer(@PathVariable String username,@PathVariable String password) {
 		
 		 return cus.validateCustomer(username,password);
 	}
